@@ -6,6 +6,7 @@ import numpy as np
 from cluster import *
 from sklearn import manifold
 from plot_utils import *
+xrange = range
 
 def plot_rho_delta(rho, delta):
 	'''

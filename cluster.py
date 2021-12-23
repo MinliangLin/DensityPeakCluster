@@ -5,6 +5,7 @@ import sys
 import math
 import logging
 import numpy as np
+xrange = range
 
 logger = logging.getLogger("dpc_cluster")
 

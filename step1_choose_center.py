@@ -4,12 +4,16 @@
 import logging
 from plot import *
 from cluster import *
+import joblib
 
 def plot(data, auto_select_dc = False):
-	logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-	dpcluster = DensityPeakCluster()
-	distances, max_dis, min_dis, max_id, rho, rc = dpcluster.local_density(load_paperdata, data, auto_select_dc = auto_select_dc)
-	delta, nneigh = min_distance(max_id, max_dis, distances, rho)
+	print('modified scatter plot')
+	rho, delta, nneigh = joblib.load("tmp.joblib")
+# 	logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+# 	dpcluster = DensityPeakCluster()
+# 	distances, max_dis, min_dis, max_id, rho, rc = dpcluster.local_density(load_paperdata, data, auto_select_dc = auto_select_dc)
+# 	delta, nneigh = min_distance(max_id, max_dis, distances, rho)
+# 	joblib.dump([rho, delta, nneigh], "tmp.joblib")
 	plot_rho_delta(rho, delta)   #plot to choose the threthold
 
 if __name__ == '__main__':
